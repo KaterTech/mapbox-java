@@ -68,8 +68,13 @@ jobs:
           name: Build Java libraries
           command: make build-release
       - deploy:
-          name: Publish Java Services To Maven Central
+          name: Publish Java libraries to Bintray
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            make publish ;
+            if [[ $CIRCLE_BRANCH == master ]] || [[ $CIRCLE_BRANCH == release-* ]] || [[ $CIRCLE_TAG == android-v* ]]; then
+              version=$(cat gradle.properties | grep "VERSION_NAME")
+              if [[ $version != *"SNAPSHOT"* ]]; then
+                make publish-to-bintray
+              else
+                make publish-snapshot
+              fi
             fi

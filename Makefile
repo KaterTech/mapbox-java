@@ -27,7 +27,7 @@ javadoc:
 	./gradlew :services-turf:javadoc; mv services-turf/build/docs/javadoc/ ./documentation/turf/javadoc/ ; \
 	./gradlew :services:javadoc; mv services/build/docs/javadoc/ ./documentation/services/javadoc/ ; \
 
-publish:
+publish-to-bintray:
 	export IS_LOCAL_DEVELOPMENT=false; ./gradlew :services-core:bintrayUpload ; \
 	export IS_LOCAL_DEVELOPMENT=false; ./gradlew :services-geojson:bintrayUpload ; \
 	export IS_LOCAL_DEVELOPMENT=false; ./gradlew :services:bintrayUpload ; \
