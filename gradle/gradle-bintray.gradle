@@ -10,7 +10,7 @@ publishing {
         MapboxJavaSDKPublication(MavenPublication) {
             from components.java
             groupId project.ext.mapboxArtifactGroupId
-            artifactId
+            artifactId project.ext.mapboxArtifactId
             version project.ext.versionName
 
             afterEvaluate {
